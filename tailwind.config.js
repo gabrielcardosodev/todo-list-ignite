@@ -22,6 +22,10 @@ module.exports = {
           300: '#4EA8D3',
           500: '#1E6F9F'
         }
+      },
+
+      fontFamily: {
+        body: 'Inter'
       }
     }
   },
