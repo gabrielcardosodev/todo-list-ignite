@@ -53,15 +53,17 @@ export function Tasks() {
         onSubmit={handleCreateNewTask}
         className="flex w-full items-center justify-center gap-2"
       >
-        <textarea
+        <input
           onChange={e => setTaskTitle(e.target.value)}
           value={taskTitle}
-          className="h-[3.375rem] w-full resize-none rounded-lg border border-gray-700 bg-gray-500 pl-4 pt-3 text-gray-100 placeholder:text-gray-300 focus:border-blue-300 focus:ring-0"
+          autoFocus
+          className="h-[3.375rem] w-full resize-none rounded-lg border border-gray-700 bg-gray-500 pl-4 text-gray-100 placeholder:text-gray-300 focus:border-blue-300 focus:outline-none"
           placeholder="Adicione uma nova tarefa"
         />
         <button
+          disabled={taskTitle.trim() === ''}
           type="submit"
-          className="flex h-[3.25rem] items-center gap-2 rounded-lg bg-blue-500 px-4 text-sm font-bold text-gray-100 transition-colors hover:bg-blue-300"
+          className="flex h-[3.25rem] items-center gap-2 rounded-lg bg-blue-500 px-4 text-sm font-bold text-gray-100 transition-colors hover:bg-blue-300 disabled:cursor-not-allowed disabled:bg-gray-300"
         >
           Criar
           <PlusCircle weight="bold" size={16} />
@@ -104,7 +106,6 @@ export function Tasks() {
                   <input
                     onClick={() => handleConcludeTask(task.id)}
                     type="checkbox"
-                    checked={task.isCompleted}
                     className="h-4 w-4 cursor-pointer rounded-full border-blue-300 bg-transparent checked:bg-purple-500 checked:hover:bg-purple-500 focus:ring-0"
                   />
                   <p
